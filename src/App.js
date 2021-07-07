@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import { useContext } from "react";
+import { Context } from './Context'
+import ThemeSwitch from './components/ThemeSwitch'
 import './App.css';
 
+
 function App() {
+  //deconstruct out of providerValue object in any order
+  const { theme, incriment, decriment, number } = useContext(Context);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className={`App ${theme}`} >
+      <ThemeSwitch />
+      <button onClick={incriment}>+1</button>
+      <h1>{number}</h1>
+      <button onClick={decriment}>-1</button>
+    </div >
   );
 }
 
